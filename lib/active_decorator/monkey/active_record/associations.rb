@@ -22,6 +22,24 @@ module ActiveDecorator
             end
           end
         end
+
+        module CollectionProxy
+          def last(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def take(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def find_nth_with_limit(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def find_nth_from_last(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+        end
       end
     end
   end

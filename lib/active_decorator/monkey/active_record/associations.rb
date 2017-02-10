@@ -22,6 +22,33 @@ module ActiveDecorator
             end
           end
         end
+
+        module CollectionProxy
+          def find(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def find_by(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def find_by!(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def take(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          def take!(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+
+          # 5.1から？
+          def last(*)
+            ActiveDecorator::Decorator.instance.decorate_association(@association.owner, super)
+          end
+        end
       end
     end
   end

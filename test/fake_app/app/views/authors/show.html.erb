@@ -1,9 +1,12 @@
 <%= @author.name %>
 <%= @author.capitalized_name %>
 <%= @author.books.first.upcased_title %>
-<%= @author.books[-1].upcased_title %>
-<% if p = @author.publishers.last %><%= p.upcased_name %><% end %>
+<%= @author.books.last.upcased_title %>
+<% if b = @author.books.second_to_last %><%= b.reverse_title %><% end %>
+<% if b = @author.books.find(1) %><%= b.capitalized_title %><% end %>
+<% if b = @author.books.find_by(id: 2) %><%= b.capitalized_title %><% end %>
+<% if p = @author.publishers[-1] %><%= p.upcased_name %><% end %>
 <% if p = @author.profile %><%= p.address %><% end %>
 <% if h = @author.profile_history %><%= h.update_date %><% end %>
-<% if m = @author.magazines.first %><%= m.upcased_title %><% end %>
+<% if m = @author.magazines.take(1)[0] %><%= m.upcased_title %><% end %>
 <% if c = @author.company %><%= c.reverse_name %><% end %>

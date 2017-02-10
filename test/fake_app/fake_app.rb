@@ -103,6 +103,10 @@ module BookDecorator
     title.upcase
   end
 
+  def capitalized_title
+    title.capitalize
+  end
+
   def link
     link_to title, "#{request.protocol}#{request.host_with_port}/assets/sample.png", class: 'title'
   end

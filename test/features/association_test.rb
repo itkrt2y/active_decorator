@@ -16,12 +16,17 @@ class AssociationTest < ActionDispatch::IntegrationTest
     @matz.create_profile! address: 'Matsue city, Shimane'
     @matz.profile.create_profile_history! updated_on: Date.new(2017, 2, 7)
     @matz.magazines.create! title: 'rubima'
+    @matz.magazines.create! title: 'rubima'
+    @matz.magazines.create! title: 'rubima'
   end
 
   test 'decorating associated objects' do
     visit "/authors/#{@matz.id}"
     assert page.has_content? 'the world of code'.upcase
     assert page.has_content? 'the ruby programming language'.upcase
+    assert page.has_content? 'the world of code'.reverse
+    assert page.has_content? 'the world of code'.capitalize
+    assert page.has_content? 'the ruby programming language'.capitalize
     assert page.has_content? "o'reilly".upcase
     assert page.has_content? 'secret'
     assert page.has_content? '2017/02/07'
